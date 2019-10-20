@@ -1,0 +1,30 @@
+{
+  "teams": [
+    "Liverpool",
+    "Manchester City",
+    "Chelsea",
+    "Arsenal",
+    "Tottenham",
+    "Manchester United"
+  ],
+  "result": [
+    {
+      "round": 1,
+      "date": "",
+      "games": [
+        {
+          "team1": {
+            "name": "Arsenal",
+            "score": "2",
+            "goals": "Nicolas Pépé, Alexandre Lacazette"
+          },
+          "team2": {
+            "name": "Tottenham",
+            "score": "0",
+            "goals": ""
+          }
+        }
+      ]
+    }
+  ]
+}
