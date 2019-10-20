@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~materialize-css/sass/components/color-variables";
+@import "./colors";
+@import "~materialize-css/sass/materialize";
+
+.main_title {
+  text-align: center;
+}
+
+.table_wrap {
+  width: 600px;
+  margin: 60px auto;
+
+
+  td, th {
+    text-align: center;
+  }
+
+  span.num{
+    width: 20px;
+  }
+}
