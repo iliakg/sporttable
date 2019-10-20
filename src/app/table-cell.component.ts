@@ -25,6 +25,5 @@ export class TableCellComponent implements OnInit {
     } else {
       this.type = 'draw'
     }
-    // console.log(this.match)
   }
 }

@@ -8,6 +8,7 @@ const tableData = require('./result.json')
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
+
 export class AppComponent implements OnInit {
   table = []
   matches = {}

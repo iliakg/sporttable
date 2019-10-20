@@ -14,4 +14,5 @@ import {TableCellComponent} from './table-cell.component'
   bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule {
+}
