@@ -3,30 +3,31 @@
 <div class="table_wrap">
   <table class="table">
     <tr>
-      <th class="left">#</th>
-      <th class="left">Название</th>
-      <th *ngFor="let item of table; let i = index">{{i + 1}}</th>
+      <th></th>
+      <th class="left-text">Название</th>
+      <th *ngFor="let item of table; let i = index">{{ i + 1 }}</th>
       <th>И</th>
       <th>В</th>
       <th>Н</th>
       <th>П</th>
-      <th>ЗМ</th>
-      <th>ПМ</th>
+      <th>Г</th>
       <th>О</th>
     </tr>
     <tr *ngFor="let team1 of table; let i = index">
-      <td class="left">{{i + 1}}</td>
-      <td class="left">{{team1.name}}</td>
-      <td *ngFor="let team2 of table; let j = index">
-        {{gameData(team1.name, team2.name)}}
+      <td class="left-text text-bold"><span class="score">{{ i + 1 }}</span></td>
+      <td class="left-text text-bold border-right">{{ team1.name }}</td>
+      <td *ngFor="let team2 of table" class="border-right">
+        <app-table-cell
+          [match]="gameData(team1.name, team2.name)"
+          [same]="team1.name === team2.name"
+        ></app-table-cell>
       </td>
-      <td>{{team1.w + team1.d + team1.l}}</td>
-      <td>{{team1.w}}</td>
-      <td>{{team1.d}}</td>
-      <td>{{team1.l}}</td>
-      <td>{{team1.gf}}</td>
-      <td>{{team1.ga}}</td>
-      <td>{{team1.p}}</td>
+      <td><span class="score">{{ team1.w + team1.d + team1.l }}</span></td>
+      <td><span class="score green-text">{{ team1.w }}</span></td>
+      <td><span class="score yellow-text text-darken-3">{{ team1.d }}</span></td>
+      <td><span class="score red-text">{{ team1.l }}</span></td>
+      <td><span class="score">{{ team1.gf }}:{{ team1.ga }}</span></td>
+      <td><span class="score text-bold">{{ team1.p }}</span></td>
     </tr>
   </table>
 </div>

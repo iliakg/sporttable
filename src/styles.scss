@@ -2,20 +2,79 @@
 @import "./colors";
 @import "~materialize-css/sass/materialize";
 
+.text-bold {
+  font-weight: bold;
+}
+
 .main_title {
   text-align: center;
 }
 
 .table_wrap {
-  width: 600px;
+  width: 800px;
   margin: 60px auto;
 
-
-  td, th {
-    text-align: center;
+  table {
+    width: 100%;
   }
 
-  span.num{
-    width: 20px;
+  table td:nth-child(2n) {
+    width: 100%;
+  }
+
+  tr {
+    border-bottom: 1px solid color("brown", "lighten-4");
+
+    th {
+      padding: 0 0 10px 0;
+      text-align: center;
+
+      &.left-text {
+        text-align: left;
+      }
+    }
+
+    td {
+      padding: 0;
+      text-align: center;
+      white-space: nowrap;
+
+      &.left-text {
+        text-align: left;
+      }
+
+      &.border-right {
+        border-right: 1px solid color("brown", "lighten-4");
+      }
+    }
+  }
+
+  .matchcell {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+    justify-content: center;
+
+    &.win {
+      background: color("green", "lighten-4")
+    }
+
+    &.lose {
+      background: color("red", "lighten-4")
+    }
+
+    &.draw {
+      background: color("yellow", "lighten-4")
+    }
+  }
+
+  .crosscell {
+    background-color: color("brown", "lighten-4");
+    width: 42px;
+    height: 42px;
+  }
+
+  .score {
+    padding: 8px;
   }
 }

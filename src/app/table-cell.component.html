@@ -1,0 +1,7 @@
+<div *ngIf="!same; else crosscell" class="matchcell valign-wrapper" [ngClass]="type">
+{{score}}
+</div>
+
+<ng-template #crosscell>
+  <div class="crosscell"></div>
+</ng-template>
