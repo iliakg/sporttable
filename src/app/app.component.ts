@@ -12,9 +12,14 @@ const tableData = require('./result.json')
 export class AppComponent implements OnInit {
   table = []
   matches = {}
+  teamGoals = []
+  playersGoals = []
 
   ngOnInit() {
-    tableData.teams.forEach((value: string) => this.table.push({name: value, p: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0}))
+    tableData.teams.forEach((value: string) => {
+      this.table.push({name: value, p: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0})
+      this.teamGoals.push({name: value, goals: []})
+    })
 
     this.countPoints()
     this.table.sort((a, b) => b.p - a.p)
@@ -42,6 +47,7 @@ export class AppComponent implements OnInit {
         if (game.status !== 'pending') {
           this.matches[this.matchId(game.team1.name, game.team2.name)] = game
           this.countGameData(game)
+          this.fetchGoals(game)
         }
       })
     )
@@ -76,5 +82,27 @@ export class AppComponent implements OnInit {
     tableTeam1.ga = tableTeam1.ga + team2Score
     tableTeam2.gf = tableTeam2.gf + team2Score
     tableTeam2.ga = tableTeam2.ga + team1Score
+  }
+
+  fetchGoals(game: any) {
+    const teamGoal1 = this.teamGoals.filter(item => item.name === game.team1.name)[0]
+    const teamGoal2 = this.teamGoals.filter(item => item.name === game.team2.name)[0]
+    const goals1 = game.team1.goals.split(',').filter(String).map(item => item.trim())
+    const goals2 = game.team2.goals.split(',').filter(String).map(item => item.trim())
+
+    teamGoal1.goals = teamGoal1.goals.concat(goals1)
+    teamGoal2.goals = teamGoal2.goals.concat(goals2)
+
+    goals1.forEach((name: string) => this.addGoalToPlayer(game.team1.name, name))
+    goals2.forEach((name: string) => this.addGoalToPlayer(game.team2.name, name))
+  }
+
+  addGoalToPlayer(teamName: string, playerName: string) {
+    const player = this.playersGoals.filter(item => item.teamName === teamName && item.playerName === playerName)[0]
+    if (player) {
+      player.count++
+    } else {
+      this.playersGoals.push({teamName, playerName, count: 1})
+    }
   }
 }

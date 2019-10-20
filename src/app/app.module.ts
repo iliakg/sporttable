@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
+import {OrderModule} from 'ngx-order-pipe'
+
 import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {TableCellComponent} from './table-cell.component'
@@ -9,7 +11,7 @@ import {TableCellComponent} from './table-cell.component'
     AppComponent,
     TableCellComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, OrderModule],
   providers: [],
   bootstrap: [AppComponent]
 })

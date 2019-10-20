@@ -14,6 +14,10 @@
   width: 800px;
   margin: 60px auto;
 
+  &.small{
+    width: 360px;
+  }
+
   table {
     width: 100%;
   }
@@ -51,6 +55,7 @@
 
   .matchcell {
     width: 42px;
+
     height: 42px;
     font-size: 14px;
     justify-content: center;

@@ -1,5 +1,4 @@
-<h1 class="main_title">Таблица</h1>
-
+<h1 class="main_title">Таблица:</h1>
 <div class="table_wrap">
   <table class="table">
     <tr>
@@ -28,6 +27,24 @@
       <td><span class="score red-text">{{ team1.l }}</span></td>
       <td><span class="score">{{ team1.gf }}:{{ team1.ga }}</span></td>
       <td><span class="score text-bold">{{ team1.p }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<h1 class="main_title">Голы:</h1>
+<div class="table_wrap small">
+  <table class="table">
+    <tr>
+      <th></th>
+      <th class="left-text">Команда</th>
+      <th class="left-text">Игрок</th>
+      <th>Голов</th>
+    </tr>
+    <tr *ngFor="let player of playersGoals | orderBy: 'count' : true; let i = index">
+      <td class="left-text"><span class="score">{{ i + 1 }}</span></td>
+      <td class="left-text">{{ player.teamName }}</td>
+      <td class="left-text">{{ player.playerName }}</td>
+      <td style="padding: 10px 0">{{ player.count }}</td>
     </tr>
   </table>
 </div>
