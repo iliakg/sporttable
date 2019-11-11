@@ -44,16 +44,22 @@ export class AppComponent implements OnInit {
   countPoints() {
     tableData.result.forEach((round: any) =>
       round.games.forEach((game: any) => {
-        if (game.status !== 'pending') {
-          this.matches[this.matchId(game.team1.name, game.team2.name)] = game
-          this.countGameData(game)
-          this.fetchGoals(game)
+        if (game.status === 'pending') {
+          return
         }
+
+        this.matches[this.matchId(game.team1.name, game.team2.name)] = game
+        this.countGameData(game)
+        this.fetchGoals(game)
       })
     )
   }
 
   countGameData(game: any) {
+    if (game.status === 'lose_lose') {
+      return
+    }
+
     const tableTeam1 = this.table.filter(item => item.name === game.team1.name)[0]
     const tableTeam2 = this.table.filter(item => item.name === game.team2.name)[0]
 
