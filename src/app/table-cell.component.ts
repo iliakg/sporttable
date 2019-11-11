@@ -10,17 +10,21 @@ export class TableCellComponent implements OnInit {
   score: string
   type: string
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
-    if (this.match === undefined) { return }
+    if (this.match === undefined) {
+      return
+    }
 
-    this.score = this.match.team1.score + ':' + this.match.team2.score
+    const team1Score = parseInt(this.match.team1.score, 10)
+    const team2Score = parseInt(this.match.team2.score, 10)
 
-    if (this.match.team1.score > this.match.team2.score) {
+    this.score = team1Score + ':' + team2Score
+
+    if (team1Score > team2Score) {
       this.type = 'win'
-    } else if (this.match.team1.score < this.match.team2.score) {
+    } else if (team1Score < team2Score) {
       this.type = 'lose'
     } else {
       this.type = 'draw'
